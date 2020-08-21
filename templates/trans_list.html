@@ -24,7 +24,7 @@
             {% for transaction in object_list %}
             <tr>
                 <td><a href="#" class="btn btn-primary btn-sm"><img src="{% static 'transaction/pencil-square.svg' %}"></a></td>
-                <td>{{ transaction.client }}</td>
+                <td><a href="{% url 'client_update' transaction.client.pk %}">{{ transaction.client }}</a></td>
                 <td>{{ transaction.lender }}</td>
                 {% if transaction.submitted %}
                     <td><img src="{% static 'transaction/check-square-fill.svg' %}"></td>

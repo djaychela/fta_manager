@@ -14,7 +14,7 @@ class Transaction(models.Model):
     file1_30 = models.BooleanField()
     val_date = models.DateTimeField(blank=True, null=True)
     offer_date = models.DateTimeField(blank=True, null=True)
-    fee = models.IntegerField(blank=True)
+    fee = models.CharField(max_length=80, blank=True)
     fee_paid = models.BooleanField()
     completion = models.DateTimeField(blank=True, null=True)
     comm_recd = models.DateTimeField(blank=True, null=True)
