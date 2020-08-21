@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h1>Update Client</h1>
+<div class="row justify-content-center">
+    
+    <div class="col-12">
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-6">
+            {{ form.name|as_crispy_field }}
+        </div>
+        <div class="col-6">
+            {{ form.phone|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ form.email|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ form.add_1|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ form.add_2|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ form.add_3|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            {{ form.postcode|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <input class="btn btn-primary btn-block" type="submit" value="Update">
+        </div>
+        <div class="col-6">
+            <a href="{% url 'client_list' %}" class="btn btn-danger btn-block">Cancel</a>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+
+{% endblock content %}
