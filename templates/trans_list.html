@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
+{% load static %}
 <h1>Transaction List</h1>
+
 <div class="row justify-content-center">
     <div class="col-12">
 
@@ -10,14 +12,50 @@
                 <th>Edit</th>
                 <th>Client</th>
                 <th>Lender</th>
+                <th>Submitted</th>
+                <th>EID</th>
+                <th>360FF</th>
+                <th>Docs</th>
+                <th>RWL</th>
+                <th>File1-30</th>
                 <th>Completion</th>
                 <th>Review Date</th>
             </thead>
             {% for transaction in object_list %}
             <tr>
-                <td><a href="#" class="btn btn-primary btn-sm">Edit</a></td>
+                <td><a href="#" class="btn btn-primary btn-sm"><img src="{% static 'transaction/pencil-square.svg' %}"></a></td>
                 <td>{{ transaction.client }}</td>
                 <td>{{ transaction.lender }}</td>
+                {% if transaction.submitted %}
+                    <td><img src="{% static 'transaction/check-square-fill.svg' %}"></td>
+                {% else %}
+                    <td><img src="{% static 'transaction/x-square.svg' %}"></td>
+                {% endif %}
+                {% if transaction.eid %}
+                    <td><img src="{% static 'transaction/check-square-fill.svg' %}"></td>
+                {% else %}
+                    <td><img src="{% static 'transaction/x-square.svg' %}"></td>
+                {% endif %}
+                {% if transaction.ff360 %}
+                    <td><img src="{% static 'transaction/check-square-fill.svg' %}"></td>
+                {% else %}
+                    <td><img src="{% static 'transaction/x-square.svg' %}"></td>
+                {% endif %}
+                {% if transaction.docs %}
+                    <td><img src="{% static 'transaction/check-square-fill.svg' %}"></td>
+                {% else %}
+                    <td><img src="{% static 'transaction/x-square.svg' %}"></td>
+                {% endif %}
+                {% if transaction.rwl %}
+                    <td><img src="{% static 'transaction/check-square-fill.svg' %}"></td>
+                {% else %}
+                    <td><img src="{% static 'transaction/x-square.svg' %}"></td>
+                {% endif %}
+                {% if transaction.file1_30 %}
+                    <td><img src="{% static 'transaction/check-square-fill.svg' %}"></td>
+                {% else %}
+                    <td><img src="{% static 'transaction/x-square.svg' %}"></td>
+                {% endif %}
                 <td>{{ transaction.completion }}</td>
                 <td>{{ transaction.review_date }}</td>
             </tr>
