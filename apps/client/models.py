@@ -9,3 +9,6 @@ class Client(models.Model):
     add_2 = models.CharField(max_length=100, blank=True)
     add_3 = models.CharField(max_length=100, blank=True)
     postcode = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
