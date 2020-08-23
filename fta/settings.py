@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     #local
     'apps.client',
     'apps.transaction',
+    'apps.note',
 ]
 
 MIDDLEWARE = [
