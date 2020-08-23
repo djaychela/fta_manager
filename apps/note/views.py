@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
-from .models import Note
 from django.urls import reverse_lazy
+
+from .models import Note
+from .forms import NoteForm
 
 # Create your views here.
 class NoteCreate(CreateView):
-    model = Note
-    fields = ["transaction", "comment"]
+    form_class = NoteForm
     template_name = "note_create.html"
     success_url = reverse_lazy("note_list")
 

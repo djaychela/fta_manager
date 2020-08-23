@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     #3rd party
     'bootstrap4',
     'crispy_forms',
+    'tinymce',
 
     #local
     'apps.client',
