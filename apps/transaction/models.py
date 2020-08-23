@@ -19,4 +19,7 @@ class Transaction(models.Model):
     completion = models.DateTimeField(blank=True, null=True)
     comm_recd = models.DateTimeField(blank=True, null=True)
     review_date = models.DateTimeField(blank=True, null=True)
+
+    def __str__(self):
+        return self.client.name
     

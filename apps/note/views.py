@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 from django.urls import reverse_lazy
 
+from apps.transaction.models import Transaction
+
 from .models import Note
 from .forms import NoteForm
 
@@ -10,6 +12,17 @@ class NoteCreate(CreateView):
     form_class = NoteForm
     template_name = "note_create.html"
     success_url = reverse_lazy("note_list")
+
+    def get_form_kwargs(self):
+        try:
+            trans = Transaction.objects.filter(id=self.kwargs['transaction'])
+        except KeyError:
+            trans = '0'
+        print(trans)
+        # note - inject transaction ID into form data here.
+        if self.request.method == "POST":
+            print(super().get_form_kwargs())
+        return super().get_form_kwargs()
 
 class NoteList(ListView):
     model = Note
@@ -22,6 +35,6 @@ class NoteDetail(DetailView):
 
 class NoteUpdate(UpdateView):
     model = Note
-    fields = ["comment"]
+    form_class = NoteForm
     template_name = "note_update.html"
     success_url = reverse_lazy("note_list")

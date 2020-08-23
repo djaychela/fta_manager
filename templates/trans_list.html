@@ -20,10 +20,11 @@
                 <th>File1-30</th>
                 <th>Completion</th>
                 <th>Review Date</th>
+                <th>Add Note</th>
             </thead>
             {% for transaction in object_list %}
             <tr>
-                <td><a href="#" class="btn btn-primary btn-sm"><img src="{% static 'transaction/pencil-square.svg' %}"></a></td>
+                <td><a href="{% url 'trans_update' transaction.client.pk %}" class="btn btn-primary btn-sm"><img src="{% static 'transaction/pencil-square.svg' %}"></a></td>
                 <td><a href="{% url 'client_update' transaction.client.pk %}">{{ transaction.client }}</a></td>
                 <td>{{ transaction.lender }}</td>
                 {% if transaction.submitted %}
@@ -58,6 +59,7 @@
                 {% endif %}
                 <td>{{ transaction.completion }}</td>
                 <td>{{ transaction.review_date }}</td>
+                <td><a href="{% url 'note_add_new' transaction.pk %}" class="btn btn-primary btn-sm"><img src="{% static 'transaction/plus-square.svg' %}"></a></td>
             </tr>
             {% empty %}
             No Transactions Yet

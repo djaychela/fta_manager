@@ -17,10 +17,10 @@
             </thead>
             {% for note in object_list %}
             <tr>
-                <td><a href="#" class="btn btn-primary btn-sm">Edit</a></td>
+                <td><a href="{% url 'note_update' note.pk %}" class="btn btn-primary btn-sm">Edit</a></td>
                 <td>{{ note.created_date|date:"d/m/y H:i" }}</td>
                 <td>{{ note.created_by }}</td>
-                <td>{{ note.comment|truncatechars:25|safe }}</td>
+                <td>{{ note.comment|truncatechars_html:25|safe }}</td>
                 <td>{{ note.edited_date|date:"d/m/y H:i" }}</td>
                 <td>{{ note.edited_by }}</td>
             </tr>

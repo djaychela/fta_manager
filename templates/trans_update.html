@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+<h1>Update Transaction</h1>
+<div class="row justify-content-center">
+    <div class="col-12">
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+                <div class="row">
+                <div class="col-6">
+                    <input class="btn btn-primary btn-block" type="submit" value="Update">
+                </div>
+                <div class="col-6">
+                    <a href="{% url 'trans_list' %}" class="btn btn-danger btn-block">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}

@@ -11,4 +11,8 @@ class Note(models.Model):
     edited_by = models.CharField(max_length=100)
     comment = HTMLField()
     transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.comment[:15]} - {self.edited_date}"
+        # return super().__str__()
     

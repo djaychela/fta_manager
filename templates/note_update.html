@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script type="text/javascript" src="/static/tinymce/tinymce.min.js"></script>
+{% load crispy_forms_tags %}
+<h1>Update Note</h1>
+<div class="row justify-content-center">
+    
+    <div class="col-12">
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-12">
+            {{ form|crispy }}
+        </div>
+
+    </div>
+   
+    <div class="row">
+        <div class="col-6">
+            <input class="btn btn-primary btn-block" type="submit" value="Submit">
+        </div>
+        <div class="col-6">
+            <a href="{% url 'client_list' %}" class="btn btn-danger btn-block">Cancel</a>
+        </div>
+    </div>
+</form>
+</div>
+</div>
+
+{% endblock content %}
