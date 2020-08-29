@@ -9,3 +9,11 @@ class NoteForm(forms.ModelForm):
     class Meta:       
         model = Note        
         fields = ('transaction', 'comment', 'edited_by')
+
+
+class NoteAddForm(forms.ModelForm):    
+    comment = forms.CharField(widget=TinyMCE(attrs={'cols': 30, 'rows': 10}))
+   
+    class Meta:       
+        model = Note        
+        fields = ('transaction', 'comment', 'edited_by')
