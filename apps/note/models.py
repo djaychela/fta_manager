@@ -8,7 +8,7 @@ class Note(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     created_by = models.CharField(max_length=100)
     edited_date = models.DateTimeField(auto_now=True)
-    edited_by = models.CharField(max_length=100)
+    edited_by = models.CharField(max_length=100, blank=True)
     comment = HTMLField()
     transaction = models.ForeignKey(Transaction, on_delete=models.CASCADE)
 

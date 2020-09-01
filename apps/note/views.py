@@ -15,7 +15,7 @@ class NoteCreate(CreateView):
 
 class NoteAdd(CreateView):
     form_class = NoteAddForm
-    template_name = "note_create.html"
+    template_name = "note_add.html"
     success_url = reverse_lazy("note_list")
 
     def get_form_kwargs(self):
@@ -24,13 +24,10 @@ class NoteAdd(CreateView):
         except KeyError:
             trans = "0"
         if self.request.method == "POST":
+            # setting transaction from post request data
             kwargs = super().get_form_kwargs()
-            print("**** PRE ****")
-            print(kwargs)
             kwargs['data'] = kwargs['data'].copy()
             kwargs['data']['transaction'] = trans.id
-            print("**** POST ****")
-            print(kwargs)
             return kwargs
         return super().get_form_kwargs()
 
