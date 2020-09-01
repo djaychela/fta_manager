@@ -5,7 +5,7 @@ from django.urls import reverse_lazy
 from apps.transaction.models import Transaction
 
 from .models import Note
-from .forms import NoteForm, NoteAddForm
+from .forms import NoteForm, NoteAddForm, NoteUpdateForm
 
 # Create your views here.
 class NoteCreate(CreateView):
@@ -42,6 +42,11 @@ class NoteDetail(DetailView):
 
 class NoteUpdate(UpdateView):
     model = Note
-    form_class = NoteForm
+    form_class = NoteUpdateForm
     template_name = "note_update.html"
     success_url = reverse_lazy("note_list")
+
+class NoteDelete(DeleteView):
+    model = Note
+    success_url = reverse_lazy("note_list")
+    template_name = "note_delete.html"

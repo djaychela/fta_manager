@@ -17,11 +17,14 @@
     </div>
    
     <div class="row">
-        <div class="col-6">
+        <div class="col-4">
             <input class="btn btn-primary btn-block" type="submit" value="Submit">
         </div>
-        <div class="col-6">
-            <a href="{% url 'client_list' %}" class="btn btn-danger btn-block">Cancel</a>
+        <div class="col-4">
+            <a href="{% url 'client_list' %}" class="btn btn-secondary btn-block">Cancel</a>
+        </div>
+        <div class="col-4">
+            <a href="{% url 'note_delete' object.pk %}" class="btn btn-danger btn-block">Delete</a>
         </div>
     </div>
 </form>

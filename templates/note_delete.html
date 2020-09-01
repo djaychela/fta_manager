@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+<h1>Delete Note</h1>
+<div class="row justify-content-center">
+    
+    <div class="col-12">
+<form method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-12">
+            Are you sure you want to delete the following note?
+
+            <strong>Transaction: </strong>{{ note.transaction }}
+            {{ note.comment|safe }}
+        </div>
+
+    </div>
+   
+    <div class="row">
+        <div class="col-6">
+            <input class="btn btn-danger btn-block" type="submit" value="Delete Note">
+        </div>
+        <div class="col-6">
+            <a href="#" onclick="javascript:history.go(-2)" class="btn btn-secondary btn-block">Cancel</a>
+        </div>
+
+    </div>
+</form>
+</div>
+</div>
+
+{% endblock content %}
